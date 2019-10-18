@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <div>
+      <a href="{{ url_for('home') }}">Home</a> |
+      {% if current_user.is_authenticated %}
+        Welcome {{ current_user }}! |
+        <a href="{{ url_for('logout') }}" title="Logout">Logout</a>
+        {% if current_user.egnyte_integration %}
+          {% if current_user.egnyte_integration.access_token %}
+            | <a href="{{ url_for('process_events') }}" title="Events">Events</a>
+          {% endif %}
+        {% endif %}
+      {% else %}
+        <a href="{{ url_for('login') }}" title="Login">Login</a>
+      {% endif %}
+    </div>
+    <hr>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div align="center">
+    {% if current_user.is_authenticated %}
+      {% if current_user.egnyte_integration and current_user.egnyte_integration.access_token %}
+        Egnyte integrated successfully
+        [<a href="{{ url_for('egnyte_app_authorize') }}" title="Egnyte integration">Re-integrate</a>]
+      {% else %}
+        <a href="{{ url_for('egnyte_app_authorize') }}" title="Egnyte integration">Integrate Egnyte</a>
+      {% endif %}
+    {% endif %}
+  </div>
+{% endblock content %}

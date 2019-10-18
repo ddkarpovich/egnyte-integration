@@ -1,0 +1,7 @@
+Flask==1.1.1
+flask-sqlalchemy==2.4.1
+flask-login==0.4.1
+flask-wtf==0.14.2
+flask-mysql==1.4.0
+pymysql
+flask_migrate==2.5.2

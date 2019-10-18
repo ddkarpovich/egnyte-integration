@@ -1,0 +1,3 @@
+
+class TokenExchangeFailed(Exception):
+    pass
